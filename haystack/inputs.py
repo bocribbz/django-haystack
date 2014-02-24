@@ -2,7 +2,11 @@ from __future__ import unicode_literals
 import re
 import warnings
 
-from django.utils.encoding import python_2_unicode_compatible
+try:
+    from django.utils.encoding import python_2_unicode_compatible
+except ImportError:
+    # django < 1.4.2
+    python_2_unicode_compatible = lambda x:x
 
 try:
     from django.utils.encoding import force_text

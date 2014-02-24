@@ -2,7 +2,11 @@ from __future__ import unicode_literals
 import re
 
 from django.conf import settings
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 
 from haystack.constants import ID, DJANGO_CT, DJANGO_ID
 from haystack.utils.highlighting import Highlighter

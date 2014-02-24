@@ -3,7 +3,11 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 from django.utils.text import capfirst
 from haystack.exceptions import NotHandled, SpatialError
 from haystack.utils import log as logging

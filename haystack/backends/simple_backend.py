@@ -4,7 +4,11 @@ A very basic, ORM-based backend for simple search during tests.
 from __future__ import unicode_literals
 from django.conf import settings
 from django.db.models import Q
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 from haystack import connections
 from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, SearchNode, log_query
 from haystack.inputs import PythonData

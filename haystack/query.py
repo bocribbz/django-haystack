@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
 import operator
 import warnings
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 from haystack import connections, connection_router
 from haystack.backends import SQ
 from haystack.constants import REPR_OUTPUT_SIZE, ITERATOR_LOAD_PER_QUERY, DEFAULT_OPERATOR

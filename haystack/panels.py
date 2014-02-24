@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
 import datetime
 from django.template.loader import render_to_string
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 from django.utils.translation import ugettext_lazy as _
 from haystack import connections
 from debug_toolbar.panels import DebugPanel

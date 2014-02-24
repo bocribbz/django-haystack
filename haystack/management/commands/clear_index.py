@@ -4,7 +4,11 @@ from optparse import make_option
 import sys
 
 from django.core.management.base import BaseCommand
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 
 
 class Command(BaseCommand):

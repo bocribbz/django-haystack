@@ -5,7 +5,11 @@ import warnings
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.loading import get_model
-from django.utils import six
+try:
+    from django.utils import six
+except ImportError:
+    # django < 1.4.2
+    import six
 import haystack
 from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, log_query
 from haystack.constants import ID, DJANGO_CT, DJANGO_ID, DEFAULT_OPERATOR

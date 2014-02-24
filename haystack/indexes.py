@@ -3,7 +3,11 @@ import copy
 import threading
 import warnings
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.six import with_metaclass
+try:
+    from django.utils.six import with_metaclass
+except ImportError:
+    # django < 1.4.2
+    from six import with_metaclass
 from haystack import connections, connection_router
 from haystack.constants import ID, DJANGO_CT, DJANGO_ID, Indexable, DEFAULT_ALIAS
 from haystack.fields import *
